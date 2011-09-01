@@ -3,7 +3,7 @@ reloader.js
 
 This module reloads the current webpage automatically based on given interval. This behavior can be particularly useful for testing. Just attach reloader to your test suite, let it run, develop and see your tests fail or pass.
 
-There are more robust solutions, such as [LiveReload](https://github.com/mockko/livereload), available. Getting these to work may sometimes be quite difficult, however. That's why I came up with this little hack.
+There are more robust solutions, such as [LiveReload](https://github.com/mockko/livereload) and [reload](http://code.google.com/p/reloader/), available. Getting these to work may sometimes be quite difficult, however. That's why I came up with this little hack.
 
 
 Basic Usage

@@ -1,8 +1,8 @@
 require(
-    ['src/reloader'],
-    function(reloader) {
+    ['src/reload'],
+    function(reload) {
         require.ready(function() {
-            var r = reloader(2000);
+            var r = reload(2000);
 
             document.body.appendChild(r.ui());
 
