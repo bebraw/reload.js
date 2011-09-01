@@ -19,7 +19,7 @@ document.body.appendChild(r.ui()); // shows simple play/stop UI
 r.play(); // set the thing on
 ```
 
-In addition to "ui" and "play" methods there's a "stop" method.
+In addition to "ui" and "play" methods there are "stop" and "interval" (get/set) methods.
 
 License
 -------

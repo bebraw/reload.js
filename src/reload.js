@@ -1,17 +1,16 @@
 define(function() {
-    return function(interval) {
+    return function(i) {
         var scope = this;
-        this.interval = Math.max(interval, 500); // 500ms at min
 
         var ui = function(playLabel, stopLabel) {
             playLabel = playLabel || 'Play';
             stopLabel = stopLabel || 'Stop';
 
             var elem = document.createElement('div');
-            var running = !('_timerId' in scope);
+            var running = '_timerId' in scope;
 
             var setText = function() {
-                elem.innerHTML = running? stopLabel: playLabel;
+                elem.innerHTML = running? playLabel: stopLabel;
             };
 
             var setState = function() {
@@ -28,12 +27,21 @@ define(function() {
             return elem;
         };
 
+        var interval = function(i) {
+            if(i) {
+                scope._interval = i;
+            }
+
+            return scope._interval;
+        };
+        interval(i);
+
         var play = function() {
             var reload = function() {
                 location.reload(true);
             };
 
-            scope._timerId = setTimeout(reload, scope.interval);
+            scope._timerId = setTimeout(reload, Math.max(interval(), 500)); // min 500 ms
         };
 
         var stop = function() {
@@ -43,7 +51,8 @@ define(function() {
         return {
             ui: ui,
             play: play,
-            stop: stop
+            stop: stop,
+            interval: interval
         };
     };
 });
