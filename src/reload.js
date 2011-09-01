@@ -3,18 +3,21 @@ define(function() {
         var scope = this;
         this.interval = Math.max(interval, 500); // 500ms at min
 
-        var ui = function() {
+        var ui = function(playLabel, stopLabel) {
+            playLabel = playLabel || 'Play';
+            stopLabel = stopLabel || 'Stop';
+
             var elem = document.createElement('div');
-            var stopped = !('_timerId' in scope);
+            var running = !('_timerId' in scope);
 
             var setText = function() {
-                elem.innerHTML = stopped? 'Stop tests': 'Play tests';
+                elem.innerHTML = running? stopLabel: playLabel;
             };
 
             var setState = function() {
-                stopped = !stopped;
+                running = !running;
                 setText();
-                stopped? play(): stop();
+                running? stop(): play();
             };
 
             elem.id = 'playback';
