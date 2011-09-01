@@ -1,5 +1,22 @@
 reloader.js
 ===========
 
-TODO
+This module reloads the current webpage automatically based on given interval. This behavior can be particularly useful for testing. Just attach reloader to your test suite, let it run, develop and see your tests fail or pass.
 
+There are more robust solutions, such as [LiveReload](https://github.com/mockko/livereload), available. Getting these to work may sometimes be quite difficult, however. That's why I came up with this little hack.
+
+
+Basic Usage
+-----------
+
+The API itself is quite simple. The following example shows how to get reloader.js to work:
+
+```javascript
+var r = reloader(2000); // 2000 ms interval (min 500)
+
+document.body.appendChild(r.ui()); // shows simple play/stop UI
+
+r.play(); // set the thing on
+```
+
+In addition to "ui" and "play" methods there's a "stop" method.
